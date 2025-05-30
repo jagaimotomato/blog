@@ -1,4 +1,4 @@
-# Change baseURL before deploy
+# 开发环境配置
 baseURL = "https://jagaimotomato.github.io/blog"
 languageCode = "zh-cn"
 title = "Joy's Blog"
@@ -48,7 +48,7 @@ pagerSize = 5
 
 [[menu.main]]
     name = "搜索"
-    url = "/search"
+    url = "/page/search"
     weight = 30
     identifier = "search"
     [menu.main.params]
@@ -221,4 +221,4 @@ clientSecret = ""
 
 [params.comments.cusdis]
 host = ""
-id = ""
+id = "" 
