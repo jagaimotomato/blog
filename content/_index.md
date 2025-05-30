@@ -1,6 +1,6 @@
 ---
 title: "首页"
-description: "Joy's Blog 首页"
+description: "欢迎来到Joy的博客"
 ---
 
-欢迎来到 Joy's Blog！
+欢迎来到我的博客！

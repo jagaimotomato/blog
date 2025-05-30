@@ -1,5 +1,5 @@
 # Change baseURL before deploy
-baseURL = "https://jagaimotomato.github.io/blog/"
+baseURL = "https://jagaimotomato.github.io"
 languageCode = "zh-cn"
 title = "Joy's Blog"
 theme = 'hugo-theme-stack'
@@ -134,7 +134,7 @@ site = ""
 card = "summary_large_image"
 
 [params.defaultImage.opengraph]
-enabled = false
+enabled = true
 local = false
 src = ""
 
@@ -151,12 +151,12 @@ enabled = true
 ## Comments
 [params.comments]
 enabled = true
-provider = "disqus"
+provider = "giscus"
 
 [params.comments.disqusjs]
-shortname = "blog-zvyjmruksf"
+shortname = ""
 apiUrl = ""
-apiKey = "Bm7M9jAK9NmEPRKUf8BKtnhZrOn8PhZFkJzBEEwHgyRXX0ScCIYCNtIbrZjyck3C"
+apiKey = ""
 admin = ""
 adminLabel = ""
 
@@ -202,13 +202,13 @@ serverName = "cactus.chat"
 siteName = ""
 
 [params.comments.giscus]
-repo = ""
-repoID = ""
-category = ""
-categoryID = ""
-mapping = ""
-lightTheme = ""
-darkTheme = ""
+repo = "jagaimotomato/blog"
+repoID = "R_kgDOOzCggw"
+category = "Announcements"
+categoryID = "DIC_kwDOOzCgg84Cqy3w"
+mapping = "pathname"
+lightTheme = "light"
+darkTheme = "dark"
 reactionsEnabled = 1
 emitMetadata = 0
 
