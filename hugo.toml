@@ -1,5 +1,5 @@
 # Change baseURL before deploy
-baseURL = "https://jagaimotomato.github.io/blog"
+baseURL = "https://jagaimotomato.github.io/blog/"
 languageCode = "zh-cn"
 title = "Joy's Blog"
 theme = 'hugo-theme-stack'
