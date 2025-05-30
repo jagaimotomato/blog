@@ -154,9 +154,9 @@ enabled = true
 provider = "disqus"
 
 [params.comments.disqusjs]
-shortname = ""
+shortname = "blog-zvyjmruksf"
 apiUrl = ""
-apiKey = ""
+apiKey = "Bm7M9jAK9NmEPRKUf8BKtnhZrOn8PhZFkJzBEEwHgyRXX0ScCIYCNtIbrZjyck3C"
 admin = ""
 adminLabel = ""
 
