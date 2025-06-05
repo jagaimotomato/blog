@@ -8,3 +8,5 @@ categories: ["前端"]
 date: 2025-06-05 10:00:00+0000
 image: 1.png
 ---
+
+今天开一篇 javascript30
