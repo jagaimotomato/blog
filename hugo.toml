@@ -79,7 +79,7 @@ icon = "brand-github"
 #icon = "brand-twitter"
 
 [params]
-favicon = "/favicon.ico"
+favicon = "/blog/favicon.ico"
 
 [params.footer]
 since = 2020
