@@ -76,7 +76,7 @@ function playSound(e) {
 
 ### 🔗 在线预览
 
-👉 [点击体验 Drum Kit](https://jagaimotomato.github.io/javascript30/clock/index.html)
+👉 [点击体验 Clock](https://jagaimotomato.github.io/javascript30/clock/index.html)
 
 ### 💡 核心技术
 
