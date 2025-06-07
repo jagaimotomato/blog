@@ -6,6 +6,7 @@ draft: false
 tags: ["代码"]
 categories: ["前端"]
 date: "2025-06-05T10:00:00+08:00"
+lastmod: "2025-06-07T11:00:00+08:00"
 ---
 
 > 🚀 **JavaScript30** 是一个为期 30 天的 JavaScript 挑战项目，通过 30 个不同的小项目来提升原生 JavaScript 技能。
