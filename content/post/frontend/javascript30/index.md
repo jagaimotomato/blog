@@ -524,6 +524,153 @@ input[type="range"]::-webkit-slider-thumb {
 
 ---
 
+## 🐛 Day 08 - Console Tricks 调试技巧
+
+### 📝 项目描述
+
+深入学习浏览器开发者工具控制台的各种调试技巧，掌握超过 15 种 console 方法，提升 JavaScript 开发和调试效率。
+
+### ✨ 功能特性
+
+- 📝 **多样化输出**：log、warn、error、info 等不同级别输出
+- 🎨 **样式化控制台**：使用 CSS 样式美化控制台输出
+- 📊 **数据可视化**：table、group 等方式组织数据展示
+- ⏱️ **性能监控**：time、count 等方法监控代码执行
+- 🔍 **调试追踪**：trace、assert 等方法辅助调试
+- 📈 **内存监控**：查看内存使用情况和性能标记
+
+### 🎯 学习要点
+
+- **基础方法**：log、warn、error、info 的区别和使用
+- **格式化输出**：字符串插值和 CSS 样式化输出
+- **数据展示**：table、group、dir 的高级用法
+- **性能调试**：time、count、trace 的实际应用
+- **DOM 调试**：console.dir()查看 DOM 对象详细信息
+
+### 🔗 在线预览
+
+👉 [点击体验 Console Tricks](https://jagaimotomato.github.io/javascript30/console/index.html)
+
+### 💡 核心技术
+
+```javascript
+// 1. 样式化输出
+console.log(
+  "%c样式化文本",
+  "font-size: 20px; color: blue; background: yellow;"
+);
+
+// 2. 字符串插值
+const name = "张三";
+console.log("你好 %s, 今年 %d 岁", name, 25);
+
+// 3. 表格显示数据
+const users = [
+  { name: "小明", age: 25, city: "北京" },
+  { name: "小红", age: 30, city: "上海" },
+];
+console.table(users);
+
+// 4. 分组输出
+console.group("🐕 狗狗信息");
+console.log("名字: Snickers");
+console.log("年龄: 2岁");
+console.groupEnd();
+
+// 5. 性能计时
+console.time("数组遍历");
+// 执行一些操作
+console.timeEnd("数组遍历");
+
+// 6. 计数功能
+console.count("点击次数");
+
+// 7. 断言调试
+console.assert(condition, "条件为false时显示此消息");
+
+// 8. 堆栈追踪
+console.trace("查看函数调用堆栈");
+```
+
+### 🔧 调试技巧详解
+
+#### 🎨 **样式化输出**
+
+```javascript
+// 多种颜色组合
+console.log(
+  "%c红色%c绿色%c蓝色",
+  "color: red; font-weight: bold;",
+  "color: green; font-style: italic;",
+  "color: blue; text-decoration: underline;"
+);
+```
+
+#### 📊 **数据组织**
+
+```javascript
+// 折叠分组
+console.groupCollapsed("详细信息");
+console.log("这些信息默认折叠");
+console.groupEnd();
+
+// 指定列显示
+console.table(data, ["name", "age"]); // 只显示指定列
+```
+
+#### ⏱️ **性能监控**
+
+```javascript
+// 嵌套计时
+console.time("总时间");
+console.time("子任务");
+// 执行代码
+console.timeEnd("子任务");
+console.timeEnd("总时间");
+
+// 计数重置
+console.count("操作"); // 1
+console.count("操作"); // 2
+console.countReset("操作");
+console.count("操作"); // 1
+```
+
+### 🔍 高级调试方法
+
+#### **DOM 元素调试**
+
+- `console.log(element)` - 显示 DOM 结构
+- `console.dir(element)` - 显示对象属性
+- `console.table(nodeList)` - 表格显示节点列表
+
+#### **条件调试**
+
+- `console.assert()` - 条件断言
+- 条件断点在满足特定条件时触发
+
+#### **内存和性能**
+
+- `console.memory` - 查看内存使用
+- `performance.mark()` - 性能标记
+- `performance.measure()` - 测量性能
+
+### 📚 实用场景
+
+1. **开发调试** - 快速定位问题和验证逻辑
+2. **性能优化** - 监控代码执行时间和资源使用
+3. **数据分析** - 美观地展示复杂数据结构
+4. **团队协作** - 标准化的调试信息输出
+5. **生产监控** - 有条件的日志记录
+
+### 🚀 最佳实践
+
+- **生产环境**：使用条件判断控制 console 输出
+- **团队开发**：统一日志输出格式和级别
+- **性能监控**：合理使用 time 方法监控关键操作
+- **数据展示**：优先使用 table 展示结构化数据
+
+---
+
 ## 🎉 总结
 
 JavaScript30 项目通过实际动手练习，让我们：
@@ -532,7 +679,7 @@ JavaScript30 项目通过实际动手练习，让我们：
 - 🎨 **提升创意**：通过有趣的项目激发编程热情
 - ⚡ **快速实践**：每个项目都能快速完成，成就感满满
 
-期待接下来的 23 个挑战！ 🔥
+期待接下来的 22 个挑战！ 🔥
 
 ---
 
