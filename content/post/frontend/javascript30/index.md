@@ -684,3 +684,380 @@ JavaScript30 项目通过实际动手练习，让我们：
 ---
 
 _💻 持续更新中... 敬请期待更多有趣的 JavaScript 练习项目！_
+
+---
+
+## ✅ Day 09 - Hold Shift to Check Multiple 多选复选框
+
+### 📝 项目描述
+
+实现 Gmail 风格的多选复选框功能，用户可以通过按住 Shift 键进行批量选择，支持从上到下或从下到上的选择方向，提供直观的用户交互体验。
+
+### ✨ 功能特性
+
+- 🖱️ **单击选择**：普通点击进行单个复选框选中/取消
+- ⌨️ **Shift 批量选择**：按住 Shift 键实现范围选择
+- 🔄 **双向选择**：支持从上到下或从下到上的选择方向
+- 🎯 **智能状态管理**：根据当前点击项的状态批量设置其他项
+- 💫 **视觉反馈**：hover 效果和选中状态的视觉变化
+- 📱 **键盘提示**：按住 Shift 时改变鼠标指针样式
+
+### 🎯 学习要点
+
+- **键盘事件**：检测 Shift 键的按下和释放状态
+- **数组操作**：NodeList 转 Array、indexOf 查找索引
+- **范围计算**：Math.min/max 确定选择范围
+- **事件对象**：e.shiftKey 属性的使用
+- **状态记录**：lastChecked 变量跟踪上次操作
+
+### 🔗 在线预览
+
+👉 [点击体验 多选复选框](https://jagaimotomato.github.io/javascript30/checkbox/index.html)
+
+### 💡 核心技术
+
+```javascript
+const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+let lastChecked; // 记录上次点击的复选框
+
+function handleCheck(e) {
+  // 检查是否按住Shift键且有上次选择记录
+  if (e.shiftKey && lastChecked && lastChecked !== this) {
+    // 转换NodeList为数组以使用indexOf
+    const checkboxArray = Array.from(checkboxes);
+
+    // 获取索引位置
+    const lastIndex = checkboxArray.indexOf(lastChecked);
+    const currentIndex = checkboxArray.indexOf(this);
+
+    // 确定选择范围
+    const start = Math.min(lastIndex, currentIndex);
+    const end = Math.max(lastIndex, currentIndex);
+
+    // 获取当前复选框状态
+    const shouldCheck = this.checked;
+
+    // 批量设置范围内所有复选框
+    for (let i = start; i <= end; i++) {
+      checkboxArray[i].checked = shouldCheck;
+    }
+  }
+
+  // 更新最后点击记录
+  lastChecked = this;
+}
+
+// 为所有复选框添加事件监听
+checkboxes.forEach((checkbox) => {
+  checkbox.addEventListener("click", handleCheck);
+});
+```
+
+### 🔧 技术细节
+
+#### **索引范围计算**
+
+```javascript
+// 处理双向选择
+const start = Math.min(lastIndex, currentIndex);
+const end = Math.max(lastIndex, currentIndex);
+
+// 确保从小到大的索引范围
+for (let i = start; i <= end; i++) {
+  // 批量操作
+}
+```
+
+#### **状态同步策略**
+
+```javascript
+// 根据当前点击项的状态决定范围内所有项的状态
+const shouldCheck = this.checked;
+
+// 统一设置，保证逻辑一致性
+checkboxArray[i].checked = shouldCheck;
+```
+
+#### **视觉反馈增强**
+
+```javascript
+// 键盘状态视觉提示
+document.addEventListener("keydown", (e) => {
+  if (e.shiftKey) {
+    document.body.style.cursor = "crosshair";
+  }
+});
+
+document.addEventListener("keyup", (e) => {
+  if (!e.shiftKey) {
+    document.body.style.cursor = "default";
+  }
+});
+```
+
+### 🎨 样式设计亮点
+
+```css
+/* 选中状态样式 */
+input:checked + p {
+  background: #f9f9f9;
+  text-decoration: line-through;
+}
+
+/* 悬停反馈 */
+.item:hover {
+  background: #f5f5f5;
+}
+
+/* 平滑过渡 */
+p {
+  transition: background 0.2s;
+}
+```
+
+### 📋 实现步骤
+
+1. **事件绑定** - 为所有复选框添加 click 监听器
+2. **状态检测** - 判断是否按住 Shift 键且有历史记录
+3. **索引计算** - 获取两个复选框在数组中的位置
+4. **范围确定** - 使用 Math.min/max 确定起止范围
+5. **批量操作** - 循环设置范围内所有复选框状态
+6. **记录更新** - 保存当前操作作为下次参考
+
+### 🔍 关键技术点
+
+- **NodeList vs Array**：使用 Array.from()转换以获得数组方法
+- **事件对象属性**：e.shiftKey 检测修饰键状态
+- **状态管理**：lastChecked 变量的生命周期管理
+- **边界处理**：确保索引范围的正确性
+
+### 🌟 用户体验优化
+
+- **直观操作**：符合用户在 Gmail 等应用中的使用习惯
+- **双向支持**：无论从上往下还是从下往上都能正确工作
+- **视觉提示**：Shift 键按下时改变鼠标样式
+- **状态一致**：批量操作保持逻辑一致性
+
+### 📚 实际应用场景
+
+- **邮件客户端**：批量选择邮件进行操作
+- **文件管理器**：批量选择文件或文件夹
+- **数据表格**：批量选择表格行进行处理
+- **任务列表**：批量标记任务状态
+
+---
+
+## 🎉 总结
+
+JavaScript30 项目通过实际动手练习，让我们：
+
+- 💪 **强化基础**：巩固原生 JavaScript 技能
+- 🎨 **提升创意**：通过有趣的项目激发编程热情
+- ⚡ **快速实践**：每个项目都能快速完成，成就感满满
+
+期待接下来的 21 个挑战！ 🔥
+
+## 🎬 Day 10 - Custom Video Player 自定义视频播放器
+
+### 📝 项目描述
+
+构建一个功能完整的自定义视频播放器，使用 HTML5 Video API 实现播放控制、进度管理、音量调节、播放速度控制等功能，提供比原生 video 控件更好的用户体验。
+
+### ✨ 功能特性
+
+- ▶️ **播放控制**：播放/暂停切换，动态图标更新
+- 📊 **进度显示**：实时进度条显示和时间格式化
+- 🖱️ **交互跳转**：点击进度条跳转到指定时间点
+- 🎚️ **拖拽控制**：鼠标拖拽实现进度条精确控制
+- 🔊 **音量调节**：滑块控制音量大小
+- ⚡ **速度控制**：可调节播放速度（0.25x - 2x）
+- ⏭️ **快进快退**：±10 秒和 ±25 秒跳转按钮
+
+### 🎯 学习要点
+
+- **Video API**：play()、pause()、currentTime、duration 等属性方法
+- **事件监听**：timeupdate、loadedmetadata、play、pause 事件
+- **进度计算**：时间百分比和像素位置的转换
+- **拖拽实现**：mousedown、mousemove、mouseup 事件组合
+- **动态更新**：实时更新 UI 状态和进度显示
+
+### 🔗 在线预览
+
+👉 [点击体验 自定义视频播放器](https://jagaimotomato.github.io/javascript30/videoPlayer/index.html)
+
+### 💡 核心技术
+
+```javascript
+// 播放/暂停控制
+const playerbtn = document.querySelector(".player__button");
+const video = document.querySelector(".viewer");
+
+playerbtn.addEventListener("click", () => {
+  if (video.paused) {
+    video.play();
+    playerbtn.textContent = "❚ ❚";
+  } else {
+    video.pause();
+    playerbtn.textContent = "►";
+  }
+});
+
+// 进度更新
+function handleProgress() {
+  const percent = (video.currentTime / video.duration) * 100;
+  progressBar.style.flexBasis = `${percent}%`;
+}
+
+// 进度条点击跳转
+function scrub(e) {
+  const scrubTime = (e.offsetX / progress.offsetWidth) * video.duration;
+  video.currentTime = scrubTime;
+}
+
+// 拖拽控制
+let mousedown = false;
+progress.addEventListener("mousedown", () => (mousedown = true));
+progress.addEventListener("mousemove", (e) => mousedown && scrub(e));
+progress.addEventListener("mouseup", () => (mousedown = false));
+
+// 音量和速度控制
+function handleRangeUpdate() {
+  video[this.name] = this.value;
+}
+
+// 快进/快退功能
+function skip() {
+  video.currentTime += parseFloat(this.dataset.skip);
+}
+```
+
+### 🔧 技术实现详解
+
+#### **进度条拖拽逻辑**
+
+```javascript
+// 三步拖拽实现
+let mousedown = false;
+
+// 1. 按下时标记开始拖拽
+progress.addEventListener("mousedown", () => (mousedown = true));
+
+// 2. 移动时检查是否在拖拽状态
+progress.addEventListener("mousemove", (e) => {
+  if (mousedown) {
+    scrub(e); // 执行跳转
+  }
+});
+
+// 3. 释放时结束拖拽
+progress.addEventListener("mouseup", () => (mousedown = false));
+```
+
+#### **时间格式化函数**
+
+```javascript
+function formatTime(seconds) {
+  const mins = Math.floor(seconds / 60);
+  const secs = Math.floor(seconds % 60);
+  return `${mins}:${secs.toString().padStart(2, "0")}`;
+}
+```
+
+#### **动态属性控制**
+
+```javascript
+// 利用name属性动态设置video属性
+function handleRangeUpdate() {
+  video[this.name] = this.value; // this.name = 'volume' 或 'playbackRate'
+}
+```
+
+### 🎨 视觉效果实现
+
+```css
+/* 进度条样式 */
+.progress {
+  flex: 10;
+  position: relative;
+  cursor: pointer;
+}
+
+.progress__filled {
+  width: 100%;
+  background: #ffc600;
+  flex: 0;
+  flex-basis: 0%; /* 通过JS动态更新 */
+}
+
+/* 播放按钮状态 */
+.player__button {
+  background: none;
+  border: 0;
+  font-size: 20px;
+  cursor: pointer;
+}
+```
+
+### 📋 Video API 核心属性
+
+- **video.paused** - 检查播放状态
+- **video.currentTime** - 当前播放时间（可读写）
+- **video.duration** - 视频总时长
+- **video.volume** - 音量大小（0-1）
+- **video.playbackRate** - 播放速度
+
+### 🎛️ 事件处理机制
+
+```javascript
+// 时间更新事件 - 播放时持续触发
+video.addEventListener("timeupdate", handleProgress);
+
+// 元数据加载完成 - 获取视频信息
+video.addEventListener("loadedmetadata", () => {
+  console.log(`视频总时长: ${formatTime(video.duration)}`);
+});
+
+// 播放状态改变事件
+video.addEventListener("play", () => console.log("开始播放"));
+video.addEventListener("pause", () => console.log("暂停播放"));
+```
+
+### 🔍 关键技术点
+
+- **offsetX vs clientX**：使用 offsetX 获取相对于元素的坐标
+- **flexBasis 动态设置**：通过 CSS flex 实现进度条宽度变化
+- **数据属性应用**：data-skip 属性存储跳转秒数
+- **事件委托**：forEach 绑定多个按钮事件
+- **条件执行**：mousedown 变量控制拖拽状态
+
+### 🚀 性能优化要点
+
+- **事件节流**：mousemove 事件的高频触发处理
+- **状态缓存**：mousedown 变量避免重复判断
+- **精确计算**：使用 offsetX 确保点击位置准确性
+
+### 🌟 用户体验增强
+
+- **视觉反馈**：播放按钮图标实时更新
+- **平滑操作**：拖拽进度条提供连续控制
+- **时间显示**：格式化时间提升可读性
+- **多种控制**：点击、拖拽、按钮多种交互方式
+
+### 📚 实际应用扩展
+
+- **在线教育**：课程视频播放器
+- **视频网站**：自定义播放控件
+- **产品展示**：产品演示视频控制
+- **直播平台**：回放功能实现
+
+---
+
+## 🎉 总结
+
+JavaScript30 项目通过实际动手练习，让我们：
+
+- 💪 **强化基础**：巩固原生 JavaScript 技能
+- 🎨 **提升创意**：通过有趣的项目激发编程热情
+- ⚡ **快速实践**：每个项目都能快速完成，成就感满满
+
+期待接下来的 20 个挑战！ 🔥
