@@ -1,6 +1,6 @@
 ---
-title: "JavaScript30 挑战之旅 🎯"
-description: "闲来无事做一下GitHub上的JavaScript30练习项目，记录学习过程和心得体会"
+title: "JavaScript30 精选项目 🎯"
+description: "从 JavaScript30 挑战中精选了一些有趣的项目进行练习，记录学习过程和心得体会"
 slug: Javascript30
 draft: false
 tags: ["代码"]
@@ -9,7 +9,7 @@ date: "2025-06-05T10:00:00+08:00"
 lastmod: "2025-06-07T11:00:00+08:00"
 ---
 
-> 🚀 **JavaScript30** 是一个为期 30 天的 JavaScript 挑战项目，通过 30 个不同的小项目来提升原生 JavaScript 技能。
+> 🚀 **JavaScript30** 是一个为期 30 天的 JavaScript 挑战项目，通过 30 个不同的小项目来提升原生 JavaScript 技能。这里精选了一些有趣的项目进行练习，每个项目都展示了不同的 JavaScript 特性和应用场景。
 
 ## 🎵 Day 01 - JavaScript Drum Kit
 
@@ -1061,3 +1061,605 @@ JavaScript30 项目通过实际动手练习，让我们：
 - ⚡ **快速实践**：每个项目都能快速完成，成就感满满
 
 期待接下来的 20 个挑战！ 🔥
+
+## 🎮 Day 11 - Key Detection 键盘检测
+
+### 📝 项目描述
+
+实现一个有趣的键盘序列检测功能，当用户输入特定的秘密代码时触发特殊效果。这个项目展示了如何监听键盘事件、管理按键序列，以及实现简单的"彩蛋"功能。
+
+### ✨ 功能特性
+
+- ⌨️ **按键监听**：实时捕获用户的键盘输入
+- 🔍 **序列检测**：检测特定的按键组合
+- 🎨 **动态效果**：触发时显示特殊视觉效果
+- 💫 **数组管理**：使用数组存储和管理按键序列
+- ⚡ **实时响应**：即时反馈用户的输入
+
+### 🎯 学习要点
+
+- **键盘事件**：keyup 事件的处理
+- **数组操作**：push、splice 等数组方法
+- **字符串处理**：join() 方法组合字符
+- **条件检测**：includes() 方法检查序列
+- **外部 API**：调用第三方效果库
+
+### 🔗 在线预览
+
+👉 [点击体验 键盘检测](https://jagaimotomato.github.io/javascript30/keyDetection/index.html)
+
+### 💡 核心技术
+
+```javascript
+const pressed = [];
+const secretCode = "zhuwei";
+
+window.addEventListener("keyup", (e) => {
+  // 添加按键到数组
+  pressed.push(e.key);
+
+  // 保持数组长度与密码长度一致
+  pressed.splice(-secretCode.length - 1, pressed.length - secretCode.length);
+
+  // 检查是否匹配密码
+  if (pressed.join("").includes(secretCode)) {
+    console.log("DING DING!");
+    cornify_add(); // 添加特效
+  }
+});
+```
+
+### 🔧 技术实现详解
+
+#### **按键序列管理**
+
+```javascript
+// 添加新按键
+pressed.push(e.key);
+
+// 维护固定长度的数组
+pressed.splice(
+  -secretCode.length - 1, // 起始位置
+  pressed.length - secretCode.length // 删除数量
+);
+```
+
+#### **序列检测**
+
+```javascript
+// 将数组转换为字符串并检查是否包含密码
+if (pressed.join("").includes(secretCode)) {
+  // 触发特效
+}
+```
+
+### 🎨 实现要点
+
+- **数组长度控制**：使用 splice 保持数组长度
+- **字符串转换**：使用 join() 将数组转为字符串
+- **序列匹配**：使用 includes() 检查密码
+- **特效触发**：调用外部 API 添加视觉效果
+
+### 🔍 关键技术点
+
+- **数组操作**：动态维护固定长度的数组
+- **事件处理**：键盘事件的捕获和处理
+- **字符串处理**：数组和字符串的转换
+- **外部集成**：第三方库的调用方式
+
+### 🌟 扩展功能
+
+- **多个密码**：支持检测多个不同的密码
+- **视觉反馈**：添加按键的视觉反馈
+- **声音效果**：触发时播放音效
+- **动画效果**：自定义触发动画
+
+### 📚 实际应用场景
+
+- **网站彩蛋**：添加有趣的隐藏功能
+- **快捷键**：实现自定义快捷键
+- **游戏控制**：检测特定的按键组合
+- **安全验证**：简单的密码输入检测
+
+---
+
+## 🎉 总结
+
+JavaScript30 项目通过实际动手练习，让我们：
+
+- 💪 **强化基础**：巩固原生 JavaScript 技能
+- 🎨 **提升创意**：通过有趣的项目激发编程热情
+- ⚡ **快速实践**：每个项目都能快速完成，成就感满满
+
+期待接下来的 19 个挑战！ 🔥
+
+## 🖼️ Day 12 - Slide in on Scroll 滚动显示图片
+
+### 📝 项目描述
+
+实现一个优雅的图片滚动显示效果，当图片滚动到视口时会有平滑的渐入动画。这个项目展示了如何结合滚动事件、视口计算和 CSS 动画来创建流畅的视觉效果。
+
+### ✨ 功能特性
+
+- 🎯 **视口检测**：精确计算图片在视口中的位置
+- 🎨 **平滑动画**：使用 CSS transition 实现流畅过渡
+- ⚡ **性能优化**：使用 debounce 函数优化滚动事件
+- 📱 **响应式**：适配不同屏幕尺寸和滚动方向
+- 💫 **多方向**：支持左右两侧的图片滑入效果
+
+### 🎯 学习要点
+
+- **滚动事件**：scroll 事件的处理和优化
+- **视口计算**：window.innerHeight、scrollY 等属性
+- **元素位置**：offsetTop、height 等属性获取
+- **CSS 动画**：transform、opacity、transition 属性
+- **性能优化**：debounce 函数的实现和应用
+
+### 🔗 在线预览
+
+👉 [点击体验 滚动显示图片](https://jagaimotomato.github.io/javascript30/slideInScroll/index.html)
+
+### 💡 核心技术
+
+```javascript
+// 防抖函数实现
+function debounce(func, wait = 20, immediate = true) {
+  var timeout;
+  return function () {
+    var context = this,
+      args = arguments;
+    var later = function () {
+      timeout = null;
+      if (!immediate) func.apply(context, args);
+    };
+    var callNow = immediate && !timeout;
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+    if (callNow) func.apply(context, args);
+  };
+}
+
+// 检查图片是否应该显示
+function checkSlide() {
+  sliderImages.forEach((sliderImage) => {
+    // 计算图片显示触发点（视口底部向上偏移图片高度的一半）
+    const slideInAt =
+      window.scrollY + window.innerHeight - sliderImage.height / 2;
+    // 计算图片底部位置
+    const imageBottom = sliderImage.offsetTop + sliderImage.height;
+    // 判断图片是否应该显示
+    const isHalfShown = slideInAt > sliderImage.offsetTop;
+    const isNotScrolledPast = window.scrollY < imageBottom;
+
+    if (isHalfShown && isNotScrolledPast) {
+      sliderImage.classList.add("active");
+    } else {
+      sliderImage.classList.remove("active");
+    }
+  });
+}
+
+// 监听滚动事件
+window.addEventListener("scroll", debounce(checkSlide));
+```
+
+### 🔧 技术实现详解
+
+#### **防抖函数**
+
+```javascript
+function debounce(func, wait = 20, immediate = true) {
+  var timeout;
+  return function () {
+    var context = this,
+      args = arguments;
+    var later = function () {
+      timeout = null;
+      if (!immediate) func.apply(context, args);
+    };
+    var callNow = immediate && !timeout;
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+    if (callNow) func.apply(context, args);
+  };
+}
+```
+
+#### **视口计算**
+
+```javascript
+// 计算触发点
+const slideInAt = window.scrollY + window.innerHeight - sliderImage.height / 2;
+// 计算图片底部位置
+const imageBottom = sliderImage.offsetTop + sliderImage.height;
+```
+
+### 🎨 CSS 动画实现
+
+```css
+.slide-in {
+  opacity: 0;
+  transition: all 0.5s;
+}
+
+.align-left.slide-in {
+  transform: translateX(-30%) scale(0.95);
+}
+
+.align-right.slide-in {
+  transform: translateX(30%) scale(0.95);
+}
+
+.slide-in.active {
+  opacity: 1;
+  transform: translateX(0%) scale(1);
+}
+```
+
+### 🔍 关键技术点
+
+- **视口计算**：精确计算图片在视口中的位置
+- **性能优化**：使用 debounce 减少滚动事件触发频率
+- **CSS 变换**：使用 transform 实现平滑动画
+- **条件判断**：多条件组合控制显示时机
+
+### 🌟 扩展功能
+
+- **多方向动画**：支持上下左右四个方向的滑入
+- **自定义触发点**：可调整触发显示的位置
+- **动画时间**：可配置动画持续时间和缓动函数
+- **响应式适配**：针对不同设备优化显示效果
+
+### 📚 实际应用场景
+
+- **图片画廊**：展示图片集合
+- **产品展示**：产品图片的渐进显示
+- **博客文章**：文章配图的动态加载
+- **作品集**：作品展示的动画效果
+
+---
+
+## 🎉 总结
+
+JavaScript30 项目通过实际动手练习，让我们：
+
+- 💪 **强化基础**：巩固原生 JavaScript 技能
+- 🎨 **提升创意**：通过有趣的项目激发编程热情
+- ⚡ **快速实践**：每个项目都能快速完成，成就感满满
+
+期待接下来的 18 个挑战！ 🔥
+
+## 🔄 Day 13 - Reference VS Copy 引用与拷贝
+
+### 📝 项目描述
+
+深入理解 JavaScript 中的引用和拷贝机制，通过实际例子展示基本类型和引用类型的赋值差异，以及如何正确地进行数组和对象的拷贝操作。
+
+### ✨ 功能特性
+
+- 🔢 **基本类型**：展示数字、字符串、布尔值的值拷贝
+- 📦 **引用类型**：演示数组和对象的引用特性
+- 📋 **数组拷贝**：多种数组拷贝方法的对比
+- 🎯 **对象拷贝**：浅拷贝和深拷贝的实现
+- 💡 **最佳实践**：不同场景下的拷贝方案选择
+
+### 🎯 学习要点
+
+- **基本类型**：值拷贝的特性
+- **引用类型**：引用传递的原理
+- **数组方法**：slice()、concat()、展开运算符
+- **对象方法**：Object.assign()、展开运算符
+- **深拷贝**：JSON 方法的优缺点
+
+### 🔗 在线预览
+
+👉 [点击体验 引用与拷贝](https://jagaimotomato.github.io/javascript30/clone/index.html)
+
+### 💡 核心技术
+
+```javascript
+// 基本类型 - 值拷贝
+let age = 100;
+let age2 = age;
+age = 200;
+console.log(age, age2); // 200, 100
+
+// 数组拷贝方法
+const players = ["Wes", "Sarah", "Ryan", "Poppy"];
+
+// 方法1: slice()
+const team2 = players.slice();
+
+// 方法2: concat()
+const team3 = [].concat(players);
+
+// 方法3: 展开运算符
+const team4 = [...players];
+
+// 方法4: Array.from()
+const team5 = Array.from(players);
+
+// 对象拷贝方法
+const person = {
+  name: "Wes Bos",
+  age: 80,
+};
+
+// 方法1: Object.assign()
+const cap2 = Object.assign({}, person, { age: 12 });
+
+// 方法2: 展开运算符
+const cap3 = { ...person, name: "Sarah" };
+
+// 深拷贝（注意局限性）
+const superClone = JSON.parse(JSON.stringify(wes));
+```
+
+### 🔧 技术实现详解
+
+#### **基本类型赋值**
+
+```javascript
+// 数字、字符串、布尔值都是值拷贝
+let name = "Wes";
+let name2 = name;
+name = "Sarah";
+console.log(name, name2); // Sarah, Wes
+```
+
+#### **数组拷贝方法**
+
+```javascript
+// 1. slice() - 创建新数组
+const team2 = players.slice();
+
+// 2. concat() - 连接数组
+const team3 = [].concat(players);
+
+// 3. 展开运算符 - ES6新特性
+const team4 = [...players];
+
+// 4. Array.from() - 从类数组创建
+const team5 = Array.from(players);
+```
+
+#### **对象拷贝方法**
+
+```javascript
+// 1. Object.assign() - 合并对象
+const cap2 = Object.assign({}, person, { age: 12 });
+
+// 2. 展开运算符 - 浅拷贝
+const cap3 = { ...person, name: "Sarah" };
+
+// 3. 深拷贝（有局限性）
+const superClone = JSON.parse(JSON.stringify(wes));
+```
+
+### 🔍 关键技术点
+
+- **值拷贝**：基本类型赋值时创建新的值
+- **引用拷贝**：引用类型赋值时共享内存地址
+- **浅拷贝**：只复制一层属性
+- **深拷贝**：递归复制所有层级
+- **拷贝方法**：不同场景下的最佳选择
+
+### ⚠️ 注意事项
+
+1. **浅拷贝的局限**：
+
+   - 只复制一层属性
+   - 嵌套对象仍然是引用关系
+
+2. **深拷贝的局限**：
+
+   - 不能处理函数
+   - 不能处理循环引用
+   - 性能开销较大
+
+3. **最佳实践**：
+   - 简单对象使用浅拷贝
+   - 复杂对象考虑深拷贝
+   - 注意性能影响
+
+### 🌟 扩展功能
+
+- **自定义深拷贝**：实现完整的深拷贝函数
+- **循环引用处理**：处理对象间的循环引用
+- **特殊类型处理**：处理 Date、RegExp 等特殊对象
+- **性能优化**：优化深拷贝的性能
+
+### 📚 实际应用场景
+
+- **状态管理**：Vue/React 中的状态更新
+- **数据备份**：保存数据的快照
+- **参数传递**：避免修改原始数据
+- **配置合并**：合并默认配置和用户配置
+
+---
+
+## 🎉 总结
+
+JavaScript30 项目通过实际动手练习，让我们：
+
+- 💪 **强化基础**：巩固原生 JavaScript 技能
+- 🎨 **提升创意**：通过有趣的项目激发编程热情
+- ⚡ **快速实践**：每个项目都能快速完成，成就感满满
+
+期待接下来的 17 个挑战！ 🔥
+
+## 🎮 Day 14 - Whack A Mole 打地鼠游戏
+
+### 📝 项目描述
+
+实现一个经典的打地鼠游戏，玩家需要在限定时间内点击随机出现的地鼠来获得分数。这个项目展示了如何结合随机事件、CSS 动画和游戏逻辑来创建一个有趣的交互式游戏。
+
+### ✨ 功能特性
+
+- 🎯 **随机出现**：地鼠在随机洞口随机时间出现
+- ⏱️ **时间限制**：15 秒的游戏时间
+- 📊 **计分系统**：实时显示得分
+- 🎨 **动画效果**：地鼠上下移动的平滑动画
+- 🛡️ **防作弊**：防止程序模拟点击
+
+### 🎯 学习要点
+
+- **随机函数**：Math.random() 生成随机数
+- **CSS 动画**：使用 transform 实现动画效果
+- **事件处理**：点击事件和防作弊检测
+- **定时器**：setTimeout 控制游戏流程
+- **DOM 操作**：动态更新分数和状态
+
+### 🔗 在线预览
+
+👉 [点击体验 打地鼠游戏](https://jagaimotomato.github.io/javascript30/whackAMole/index.html)
+
+### 💡 核心技术
+
+```javascript
+// 随机时间生成
+function randomTime(min, max) {
+  return Math.round(Math.random() * (max - min) + min);
+}
+
+// 随机选择洞口
+function randomHole(holes) {
+  const idx = Math.floor(Math.random() * holes.length);
+  const hole = holes[idx];
+  if (hole === lastHole) {
+    return randomHole(holes); // 避免连续同一个洞
+  }
+  lastHole = hole;
+  return hole;
+}
+
+// 地鼠出现逻辑
+function peep() {
+  const time = randomTime(400, 1200);
+  const hole = randomHole(holes);
+  hole.classList.add("up");
+  setTimeout(() => {
+    hole.classList.remove("up");
+    if (!timeUp) peep();
+  }, time);
+}
+
+// 游戏开始
+function startGame() {
+  score = 0;
+  scoreBoard.textContent = 0;
+  timeUp = false;
+  peep();
+  setTimeout(() => (timeUp = true), 15000);
+}
+
+// 打地鼠处理
+function bonk(e) {
+  if (!e.isTrusted) return; // 防止作弊
+  if (!this.parentNode.classList.contains("up")) return;
+  score++;
+  this.parentNode.classList.remove("up");
+  scoreBoard.textContent = score;
+}
+```
+
+### 🔧 技术实现详解
+
+#### **随机性实现**
+
+```javascript
+// 生成随机时间
+function randomTime(min, max) {
+  return Math.round(Math.random() * (max - min) + min);
+}
+
+// 随机选择洞口
+function randomHole(holes) {
+  const idx = Math.floor(Math.random() * holes.length);
+  const hole = holes[idx];
+  // 避免连续同一个洞
+  if (hole === lastHole) {
+    return randomHole(holes);
+  }
+  lastHole = hole;
+  return hole;
+}
+```
+
+#### **游戏流程控制**
+
+```javascript
+// 地鼠出现控制
+function peep() {
+  const time = randomTime(400, 1200);
+  const hole = randomHole(holes);
+  hole.classList.add("up");
+  setTimeout(() => {
+    hole.classList.remove("up");
+    if (!timeUp) peep(); // 游戏未结束则继续
+  }, time);
+}
+
+// 游戏开始
+function startGame() {
+  score = 0;
+  scoreBoard.textContent = 0;
+  timeUp = false;
+  peep();
+  setTimeout(() => (timeUp = true), 15000);
+}
+```
+
+### 🎨 CSS 动画实现
+
+```css
+.hole {
+  position: relative;
+  overflow: hidden;
+}
+
+.mole {
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  height: 100%;
+  transition: all 0.4s;
+}
+
+.hole.up .mole {
+  top: 0;
+}
+```
+
+### 🔍 关键技术点
+
+- **随机性控制**：避免连续出现同一洞口
+- **动画实现**：使用 CSS transition 实现平滑动画
+- **防作弊机制**：检查事件是否由用户真实触发
+- **游戏状态管理**：控制游戏开始、结束和计分
+
+### 🌟 扩展功能
+
+- **难度级别**：不同难度设置不同的出现频率
+- **音效系统**：添加打击音效和背景音乐
+- **排行榜**：记录和显示最高分
+- **特殊地鼠**：添加奖励或惩罚的特殊地鼠
+
+### 📚 实际应用场景
+
+- **休闲游戏**：网页小游戏
+- **反应训练**：测试和训练反应速度
+- **儿童教育**：寓教于乐的游戏
+- **活动互动**：线下活动的互动环节
+
+---
+
+## 🎉 总结
+
+JavaScript30 项目通过实际动手练习，让我们：
+
+- 💪 **强化基础**：巩固原生 JavaScript 技能
+- 🎨 **提升创意**：通过有趣的项目激发编程热情
+- ⚡ **快速实践**：每个项目都能快速完成，成就感满满
+
+期待接下来的 16 个挑战！ 🔥
