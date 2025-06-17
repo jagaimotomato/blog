@@ -56,6 +56,15 @@ pagerSize = 5
         newTab = false
 
 [[menu.main]]
+    name = "关于"
+    url = "/about"
+    weight = 50
+    identifier = "about"
+    [menu.main.params]
+        icon = "user"
+        newTab = false
+
+[[menu.main]]
     name = "友情链接"
     url = "/links"
     weight = 40
