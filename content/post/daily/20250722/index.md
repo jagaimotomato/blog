@@ -1,6 +1,6 @@
 ---
 title: "洛神赋"
-description: "曹植"
+description: "建安风骨"
 date: 2025-07-22T22:51:49+08:00
 draft: false
 slug: 20250722
